@@ -1,7 +1,6 @@
 package br.com.arius.funcionarios.controller;
-
 import br.com.arius.funcionarios.model.Funcionario;
-import br.com.arius.funcionarios.model.dto.FuncionarioDto;
+import br.com.arius.funcionarios.controller.dto.FuncionarioDto;
 import br.com.arius.funcionarios.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +25,8 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public ResponseEntity<FuncionarioDto> salvarFuncionario(@RequestBody FuncionarioDto tecnico){
-        Funcionario tec = service.insert(tecnico);
+    public ResponseEntity<FuncionarioDto> salvarFuncionario(@RequestBody FuncionarioDto funcionarioDto){
+        Funcionario tec = service.insert(funcionarioDto);
         return ResponseEntity.ok(FuncionarioDto.create(tec));
     }
 

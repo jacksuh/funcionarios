@@ -1,8 +1,6 @@
 package br.com.arius.funcionarios.service;
-
-
 import br.com.arius.funcionarios.model.Especialidade;
-import br.com.arius.funcionarios.model.dto.EspecialidadeDto;
+import br.com.arius.funcionarios.controller.dto.EspecialidadeDto;
 import br.com.arius.funcionarios.repository.EspecialidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +24,11 @@ public class EspecialidadeService {
 
 
 
-    public EspecialidadeDto insert(Especialidade dto){
-       return EspecialidadeDto.create(repository.save(dto));
+    public Especialidade insert(EspecialidadeDto especialidadeDto){
+        Especialidade esp = new Especialidade();
+        esp.setDescricao(especialidadeDto.getDescricao());
+
+        return repository.save(esp);
     }
 
 
@@ -36,16 +37,16 @@ public class EspecialidadeService {
     }
 
 
-    public EspecialidadeDto update(Especialidade especialidade, Long id) {
+    public Especialidade update(EspecialidadeDto especialidadeDto, Long id) {
         Optional<Especialidade> optional = repository.findById(id);
         if (optional.isPresent()) {
             Especialidade db = optional.get();
 
-            db.setDescricao(especialidade.getDescricao());
+            db.setDescricao(especialidadeDto.getDescricao());
 
             repository.save(db);
 
-            return EspecialidadeDto.create(db);
+            return repository.save(db);
         } else {
             throw new RuntimeException("Não foi possivel atualizar o cadastro");
         }

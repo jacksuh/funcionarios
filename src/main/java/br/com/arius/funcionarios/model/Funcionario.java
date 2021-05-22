@@ -1,5 +1,4 @@
 package br.com.arius.funcionarios.model;
-
 import javax.persistence.*;
 
 /**

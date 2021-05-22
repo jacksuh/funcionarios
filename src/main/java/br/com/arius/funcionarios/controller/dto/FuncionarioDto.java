@@ -1,6 +1,4 @@
-package br.com.arius.funcionarios.model.dto;
-
-
+package br.com.arius.funcionarios.controller.dto;
 import br.com.arius.funcionarios.model.Funcionario;
 import org.modelmapper.ModelMapper;
 

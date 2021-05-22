@@ -1,8 +1,7 @@
 package br.com.arius.funcionarios.service;
-
 import br.com.arius.funcionarios.model.Especialidade;
 import br.com.arius.funcionarios.model.Funcionario;
-import br.com.arius.funcionarios.model.dto.FuncionarioDto;
+import br.com.arius.funcionarios.controller.dto.FuncionarioDto;
 import br.com.arius.funcionarios.repository.EspecialidadeRepository;
 import br.com.arius.funcionarios.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

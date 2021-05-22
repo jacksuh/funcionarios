@@ -1,7 +1,6 @@
 package br.com.arius.funcionarios.controller;
-
 import br.com.arius.funcionarios.model.Especialidade;
-import br.com.arius.funcionarios.model.dto.EspecialidadeDto;
+import br.com.arius.funcionarios.controller.dto.EspecialidadeDto;
 import br.com.arius.funcionarios.service.EspecialidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +25,9 @@ public class EspecialidadeController {
     }
 
     @PostMapping
-    public ResponseEntity<EspecialidadeDto> post(@RequestBody Especialidade especialidade){
-        EspecialidadeDto tipo = service.insert(especialidade);
-
-        return ResponseEntity.ok(tipo);
+    public ResponseEntity<EspecialidadeDto> salvarEspecialidade(@RequestBody EspecialidadeDto especialidadeDto){
+        Especialidade esp = service.insert(especialidadeDto);
+        return ResponseEntity.ok(especialidadeDto.create(esp));
     }
 
 
@@ -41,11 +39,11 @@ public class EspecialidadeController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody Especialidade especialidade){
+    public ResponseEntity atualizarEspecialidade(@PathVariable("id") Long id, @RequestBody EspecialidadeDto especialidadeDto){
 
-        especialidade.setId(id);
+        especialidadeDto.setId(id);
 
-        EspecialidadeDto f = service.update(especialidade,id);
+        Especialidade f = service.update(especialidadeDto,id);
 
         return f != null?
                 ResponseEntity.ok(f) : ResponseEntity.notFound().build();
