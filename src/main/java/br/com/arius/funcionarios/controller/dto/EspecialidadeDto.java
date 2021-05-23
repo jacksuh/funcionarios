@@ -3,6 +3,11 @@ package br.com.arius.funcionarios.controller.dto;
 import br.com.arius.funcionarios.model.Especialidade;
 import org.modelmapper.ModelMapper;
 
+/**
+ * Classe EspecialidadeDto - Data Transfer Object, responsavel para tratamento de dados passados ao front-end, tratamento de conversão utilizado o Mapper.
+ * Autor: Jackson Santos
+ *
+ */
 
 public class EspecialidadeDto {
 

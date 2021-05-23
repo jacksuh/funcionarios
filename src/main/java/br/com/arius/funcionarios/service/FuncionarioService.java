@@ -14,9 +14,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * @Autor: Jackson
- *
+ * Modelo para tratamento de dados e persistencia para o modelo Funcionario (regra de negocio).
+ * Autor: Jackson Santos
  */
+
 
 @Service
 public class FuncionarioService {
@@ -27,12 +28,12 @@ public class FuncionarioService {
     @Autowired
     EspecialidadeRepository especialidadeRepository;
 
-    public List<FuncionarioDto> getAll() {
+    public List<FuncionarioDto> getTodos() {
         return repository.findAll().stream().map(FuncionarioDto::create).collect(Collectors.toList());
     }
 
 
-    public Funcionario insert(FuncionarioDto dto) {
+    public Funcionario salvarFuncionario(FuncionarioDto dto) {
         Long idDescricao = dto.getEspecialidadeDto().getId();
         Especialidade especialidade =
                 especialidadeRepository.findById(idDescricao)
@@ -50,7 +51,7 @@ public class FuncionarioService {
     }
 
 
-    public Funcionario update(FuncionarioDto dto, Long id) {
+    public Funcionario atualizarFuncionario(FuncionarioDto dto, Long id) {
         Optional<Funcionario> optional = repository.findById(id);
 
         Especialidade esp = new Especialidade();
@@ -69,7 +70,7 @@ public class FuncionarioService {
     }
 
 
-    public void delete(Long id){
+    public void deletarFuncionario(Long id){
         Optional<Funcionario> funcionario = repository.findById(id);
         if(funcionario.isPresent()){
             repository.deleteById(id);

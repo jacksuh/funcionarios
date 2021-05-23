@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Classe responsavel por disponibilizar informações e requisição com os metodos Salvar/Atualizar/Deletar/pesquisar por Id para Especialidade.
+ * Autor: Jackson Santos
+ *
+ */
+
 @RestController
-@RequestMapping("/especialidade")
+@RequestMapping("/api/especialidade")
 @CrossOrigin("http://localhost:4200")
 public class EspecialidadeController {
 
@@ -50,7 +56,7 @@ public class EspecialidadeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
+    public ResponseEntity deletar(@PathVariable("id") Long id){
         service.delete(id);
 
         return ResponseEntity.ok().build();

@@ -4,11 +4,14 @@ import br.com.arius.funcionarios.controller.dto.EspecialidadeDto;
 import br.com.arius.funcionarios.repository.EspecialidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Modelo para tratamento de dados e persistencia para o modelo Especialidade (regra de negocio).
+ * Autor: Jackson Santos
+ */
 
 @Service
 public class EspecialidadeService {

@@ -3,8 +3,9 @@ import br.com.arius.funcionarios.model.Funcionario;
 import org.modelmapper.ModelMapper;
 
 /**
- * Autor: Jackson
- * Classe: Funcionario Dto para utilização do front end  e conversão do objeto
+ * Classe FuncionarioDto - Data Transfer Object, responsavel para tratamento de dados passados ao front-end, tratamento de conversão utilizado o Mapper.
+ * Autor: Jackson Santos
+ *
  */
 
 public class FuncionarioDto {

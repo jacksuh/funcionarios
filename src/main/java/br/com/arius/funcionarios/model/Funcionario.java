@@ -2,11 +2,11 @@ package br.com.arius.funcionarios.model;
 import javax.persistence.*;
 
 /**
- * Autor: Jackson
- * Classe: Funcionario
- * Criação da tabela no banco de dados e cardinalidade para a classe especialidade
+ * Classe para declaração de dados e persistencia com o banco de dados, sera criado a tabela tecnicos no banco de dados.
+ * Tratamento de cardinalidade N-1, relacionamento (especialidade).
+ *
+ * Autor: Jackson Santos
  */
-
 
 @Entity
 @Table(name ="tecnicos")

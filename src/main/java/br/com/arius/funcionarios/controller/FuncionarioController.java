@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Classe responsavel para tratamento do front-end  com os metodos Salvar/Atualizar/Deletar/pesquisar por Id para Funcionario.
+ * Autor: Jackson Santos
+ *
+ */
+
 @RestController
-@RequestMapping("/funcionario")
+@RequestMapping("/api/funcionario")
 @CrossOrigin("http://localhost:4200")
 public class FuncionarioController {
 
@@ -20,13 +26,13 @@ public class FuncionarioController {
 
     @GetMapping
     public ResponseEntity<List<FuncionarioDto>>obterTodos(){
-        List<FuncionarioDto> tecnico = service.getAll();
+        List<FuncionarioDto> tecnico = service.getTodos();
         return ResponseEntity.ok(tecnico);
     }
 
     @PostMapping
     public ResponseEntity<FuncionarioDto> salvarFuncionario(@RequestBody FuncionarioDto funcionarioDto){
-        Funcionario tec = service.insert(funcionarioDto);
+        Funcionario tec = service.salvarFuncionario(funcionarioDto);
         return ResponseEntity.ok(FuncionarioDto.create(tec));
     }
 
@@ -43,7 +49,7 @@ public class FuncionarioController {
 
         dto.setId(id);
 
-        Funcionario f = service.update(dto,id);
+        Funcionario f = service.atualizarFuncionario(dto,id);
 
         return f != null?
                 ResponseEntity.ok(f) : ResponseEntity.notFound().build();
@@ -51,7 +57,7 @@ public class FuncionarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity deletarFuncionario(@PathVariable("id") Long id){
-        service.delete(id);
+        service.deletarFuncionario(id);
 
         return ResponseEntity.ok().build();
     }
